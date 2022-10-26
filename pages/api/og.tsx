@@ -14,7 +14,10 @@ export default async function handler(req: NextRequest) {
     const fontData = await font;
     const { searchParams } = new URL(req.url);
     const hasName = searchParams.has("name");
-    const name = hasName ? searchParams.get("name")?.slice(0, 100) : "estranho";
+    const name =
+      hasName && searchParams.get("name") !== "undefined"
+        ? searchParams.get("name")?.slice(0, 100)
+        : "estranho";
 
     return new ImageResponse(
       (
