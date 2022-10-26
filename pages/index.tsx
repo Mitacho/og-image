@@ -7,6 +7,12 @@ export default function Home() {
   const router = useRouter();
   const { name } = router.query;
 
+  console.log("NAME: ", name);
+
+  if (!name) {
+    return null;
+  }
+
   return (
     <div className={styles.container}>
       <Head>
