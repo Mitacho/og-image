@@ -4,14 +4,8 @@ import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const { query, isReady } = useRouter();
-  const { name } = query;
-
-  console.log("NAME: ", name);
-
-  if (!isReady) {
-    return null;
-  }
+  const router = useRouter();
+  const { name } = router.query;
 
   return (
     <div className={styles.container}>
@@ -82,4 +76,8 @@ export default function Home() {
       </footer>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  return { props: {} };
 }
