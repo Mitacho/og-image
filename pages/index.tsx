@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const router = useRouter();
-  const { name } = router.query;
+  const { query, isReady } = useRouter();
+  const { name } = query;
 
   console.log("NAME: ", name);
 
-  if (!name) {
+  if (!isReady) {
     return null;
   }
 
